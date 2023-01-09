@@ -19,17 +19,21 @@ FILES = ft_client.c \
 EXEC_CLIENT = client
 EXEC_SERVER = server
 
-default: libft
-	$(CC) ./src/ft_client.c ./libft/libft.a -Iinclude -o $(EXEC_CLIENT)
+#$(CC) ./src/ft_client.c ./libft/libft.a -Iinclude -o $(EXEC_CLIENT)
+
+default: lib
 	$(CC) ./src/ft_server.c ./libft/libft.a -Iinclude -o $(EXEC_SERVER)
+	$(CC) test_client.c ./libft/libft.a -Iinclude -o client
 	@echo "Compiled server & client"
 
 lib:
 	make -C libft
 
-test:
-	$(CC) test_client.c ./libft/libft.a -Iinclude -o client
+all: default
 
 clean:
 	make clean -C libft
 	rm -rf $(EXEC_CLIENT) $(EXEC_SERVER)
+
+fclean:
+	make fclean -C libft

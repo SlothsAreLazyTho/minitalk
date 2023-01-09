@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_server.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: cbijman <cbijman@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/12/15 15:35:21 by cbijman       #+#    #+#                 */
-/*   Updated: 2022/12/15 18:54:40 by cbijman       ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include "minitalk.h"
 
@@ -21,16 +9,16 @@ void	handler(int signal)
 {
 	static int bit;
 	static int i;
+
 	if (signal == SIGUSR1)
 		i |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		ft_printf("%c", i);
-		bit = 0;
+		printf("%c", i);
 		i = 0;
+		bit = 0;
 	}
-	//ft_printf("Bit: %d\tI: %d", bit, i);
 }
 
 int	hook(int pid)
@@ -47,6 +35,7 @@ int	hook(int pid)
 
 int	main(void)
 {
+	//struct sigaction *action;
 	ft_printf("%sPID: %s%d\n", GRAY, RESET, getpid());
 	hook(getpid());
 	return (0);

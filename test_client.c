@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#include <unistd.h>
 #include <signal.h>
+#include <stdio.h>
 
 void	ft_send_bits(int pid, char i)
 {
