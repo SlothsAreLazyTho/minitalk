@@ -11,29 +11,38 @@
 # **************************************************************************** #
 
 CC = gcc
+RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_client.c \
 		ft_server.c
 
-EXEC_CLIENT = client
-EXEC_SERVER = server
+INCLUDE = ./include
+LIBRARY = ./libft/libft.a 
+HEADER = $(INCLUDE)/minitalk.h $(INCLUDE)/libft.h
 
-#$(CC) ./src/ft_client.c ./libft/libft.a -Iinclude -o $(EXEC_CLIENT)
+NAME_CLIENT = client
+NAME_SERVER = server
 
-default: lib
-	$(CC) ./src/ft_server.c ./libft/libft.a -Iinclude -o $(EXEC_SERVER)
-	$(CC) test_client.c ./libft/libft.a -Iinclude -o client
-	@echo "Compiled server & client"
+$(NAME_CLIENT): lib $(HEADER)
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) ft_$(NAME_CLIENT).c -o $@
+
+$(NAME_SERVER): lib $(HEADER)
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) ft_$(NAME_SERVER).c -o $@
 
 lib:
 	make -C libft
 
-all: default
+all: lib $(NAME_CLIENT) $(NAME_SERVER)
 
 clean:
 	make clean -C libft
-	rm -rf $(EXEC_CLIENT) $(EXEC_SERVER)
+	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
 
 fclean:
 	make fclean -C libft
+	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
+
+re: fclean all
+
+.PHONY: $(NAME_CLIENT) $(NAME_SERVER) lib all clean fclean re
