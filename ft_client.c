@@ -6,7 +6,7 @@
 /*   By: macbook <macbook@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 12:07:01 by macbook       #+#    #+#                 */
-/*   Updated: 2023/02/20 18:15:25 by macbook       ########   odam.nl         */
+/*   Updated: 2023/02/21 18:00:36 by cbijman       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	send_bits(pid_t pid, char c)
 	bit = 0;
 	while (bit < 8)
 	{
-		if ((c & (0x01 << bit)) != 0)
+		if ((c & (1 << bit)) != 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(30000);
+		usleep(300);
 		bit++;
 	}
 }

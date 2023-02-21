@@ -6,7 +6,7 @@
 #    By: cbijman <cbijman@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/15 12:42:06 by cbijman       #+#    #+#                  #
-#    Updated: 2023/02/20 18:01:45 by macbook       ########   odam.nl          #
+#    Updated: 2023/02/21 16:06:49 by cbijman       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,11 @@ lib:
 all: lib $(NAME_CLIENT) $(NAME_SERVER)
 
 clean:
-	make clean -C libft
+	$(MAKE) clean -C libft
 	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
 
 fclean:
-	make fclean -C libft
+	$(MAKE) fclean -C libft
 	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
 
 re: fclean all
