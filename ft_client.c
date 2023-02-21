@@ -6,7 +6,7 @@
 /*   By: macbook <macbook@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 12:07:01 by macbook       #+#    #+#                 */
-/*   Updated: 2023/02/17 13:33:25 by macbook       ########   odam.nl         */
+/*   Updated: 2023/02/20 18:15:25 by macbook       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@ char	*mt_strjoin(char *s1, char *s2, bool use_space)
 	int		j;
 	char	*str;
 
-	i = 0;
 	j = 0;
 	str = ft_calloc((ft_strlen(s1) + ft_strlen(s2)) + 2, sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		str[i] = s1[i];
-		i++;
-	}
 	while (s2[j])
 	{
 		str[i] = s2[j];
@@ -67,7 +64,7 @@ void	send_bits(pid_t pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(30000);
 		bit++;
 	}
 }
@@ -76,13 +73,9 @@ void	send_string(pid_t pid, const char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
+	i = -1;
+	while (str[++i])
 		send_bits(pid, str[i]);
-		i++;
-	}
-	ft_printf("Length: %d\n", ft_strlen(str));
 	send_bits(pid, '\n');
 }
 

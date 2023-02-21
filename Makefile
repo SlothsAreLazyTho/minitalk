@@ -6,7 +6,7 @@
 #    By: cbijman <cbijman@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/15 12:42:06 by cbijman       #+#    #+#                  #
-#    Updated: 2022/12/15 18:57:44 by cbijman       ########   odam.nl          #
+#    Updated: 2023/02/20 18:01:45 by macbook       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ HEADER = $(INCLUDE)/minitalk.h $(INCLUDE)/libft.h
 
 NAME_CLIENT = client
 NAME_SERVER = server
+
+.c.o:
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) $< -o $@
 
 $(NAME_CLIENT): lib $(HEADER)
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) ft_$(NAME_CLIENT).c -o $@

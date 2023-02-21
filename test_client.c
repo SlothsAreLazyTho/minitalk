@@ -6,7 +6,7 @@
 /*   By: ajordan- <ajordan-@student.42urduliz.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/19 16:19:55 by ajordan-      #+#    #+#                 */
-/*   Updated: 2023/02/16 17:35:04 by macbook       ########   odam.nl         */
+/*   Updated: 2023/02/20 17:55:19 by macbook       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_send_bits(int pid, char i)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(300);
 		bit++;
 	}
 }
