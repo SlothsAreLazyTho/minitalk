@@ -6,7 +6,7 @@
 #    By: cbijman <cbijman@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/15 12:42:06 by cbijman       #+#    #+#                  #
-#    Updated: 2023/02/20 18:01:45 by macbook       ########   odam.nl          #
+#    Updated: 2023/02/22 17:44:51 by macbook       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ NAME_SERVER = server
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) $< -o $@
 
 $(NAME_CLIENT): lib $(HEADER)
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) ft_$(NAME_CLIENT).c -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) src/$(NAME_CLIENT).c -o $@
 
 $(NAME_SERVER): lib $(HEADER)
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) ft_$(NAME_SERVER).c -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBRARY) src/$(NAME_SERVER).c -o $@
 
 lib:
 	make -C libft
